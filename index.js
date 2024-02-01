@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const connectDB = require("./db/db");
 const blogRouter = require("./routes/blog");
+const authRouter = require("./routes/user");
+const dotenv = require("dotenv");
 
 const app = express();
+dotenv.config();
 
 //PORT
 const PORT = 5718;
@@ -15,6 +18,7 @@ app.use(bodyParser.json());
 //Routes
 
 app.use("/api/blogs", blogRouter);
+app.use("/api/auth", authRouter);
 
 //Database Connection
 
